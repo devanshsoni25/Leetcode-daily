@@ -32,7 +32,7 @@ class Solution:
                     count+=1
 
                 elif visited[new_r][new_c]==0:
-                    visited[new_r][new_c]=1
                     queue.append((new_r,new_c))
+                    visited[new_r][new_c]=1
 
         return count        
