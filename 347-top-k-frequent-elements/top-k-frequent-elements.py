@@ -1,7 +1,7 @@
 class Solution:
     def topKFrequent(self, nums: list[int], k: int) -> list[int]:
         dev=dict()
-        pappu=[]
+        pappu=[[] for _ in range(len(nums)+1)]
 
         for i in range(len(nums)):
             if nums[i] in dev:
@@ -11,10 +11,13 @@ class Solution:
                 dev[nums[i]]=1
 
 
-        result=dict(sorted(dev.items(),key=lambda x:x[1],reverse=True))
-        
-        for key,values in result.items():
-            if len(pappu)<k:
-                pappu.append(key)
+        for key,values in dev.items():
+            pappu[values].append(key)
 
-        return pappu
+        res=[]
+        for i in range(len(pappu)-1,0,-1):
+            for key in pappu[i]:
+                res.append(key)
+
+                if len(res)==k:
+                    return res
