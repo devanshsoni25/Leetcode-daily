@@ -1,26 +1,15 @@
 class Solution:
     def validPalindrome(self, s: str) -> bool:
-        
-        def is_palindrome(left,right):
-            while left < right:
-                if s[left] != s[right]:
-                    return False
+        low = 0
+        high = len(s)-1
 
-                left+=1
-                right-=1
+        while low < high:
+            if s[low] != s[high]:
+                skipL , skipR = s[low+1:high+1] , s[low:high]
 
-            return True
+                return (skipL == skipL[::-1] or skipR == skipR[::-1])
 
-        left = 0
-        right = len(s)-1
-
-        while left < right:
-            if s[left] != s[right]:
-
-                return is_palindrome(left+1,right) or is_palindrome(left,right-1)
-
-            left+=1
-            right-=1
-
+            low+=1
+            high -=1
 
         return True
