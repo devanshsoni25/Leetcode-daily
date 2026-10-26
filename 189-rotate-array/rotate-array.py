@@ -1,12 +1,14 @@
 class Solution:
     def rotate(self, nums: list[int], k: int) -> None:
         n = len(nums)
-        k = k%n
+       
         if n == 0:
             return
 
         if n == 1:
             return nums
+
+        k = k%n
 
         nums.reverse()
 
